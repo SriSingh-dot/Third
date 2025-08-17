@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActiveCal - Simple Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #001f3f, #1e3c72, #2a5298);
+            color: white;
+        }
+        header {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            font-size: 2.8em;
+            letter-spacing: 2px;
+        }
+        nav {
+            text-align: center;
+            padding: 12px;
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+        nav a {
+            color: #ffdd57;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #ffffff;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 50px;
+            gap: 50px;
+        }
+        .calculator {
+            background: linear-gradient(145deg, #fdfdfd, #e3e3e3);
+            color: black;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 370px;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 20px;
+            text-align: right;
+            font-size: 24px;
+            border-radius: 15px;
+            border: none;
+            box-shadow: inset 2px 3px 6px rgba(0,0,0,0.3);
+            padding: 10px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            flex: 1;
+            margin: 6px;
+            height: 65px;
+            font-size: 22px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 2px 4px 8px rgba(0,0,0,0.3);
+            transition: 0.3s ease;
+        }
+        .btn:hover {
+            background: #ffdd57;
+            color: black;
+            transform: scale(1.05);
+        }
+        .facts {
+            width: 270px;
+            background: rgba(255,255,255,0.12);
+            padding: 20px;
+            border-radius: 20px;
+            line-height: 1.6;
+            font-size: 15px;
+            box-shadow: 0px 5px 12px rgba(0,0,0,0.3);
+        }
+        .facts h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🧮 Welcome to ActiveCal 🧮</h1>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#facts">Facts</a>
+    </nav>
+
+    <section id="home" style="text-align:center; margin: 60px;">
+        <h2>✨ Simple. Modern. Useful. ✨</h2>
+        <p>ActiveCal is designed with beauty and ease in mind to make your math experience fun and smooth 🪄</p>
+    </section>
+
+    <div class="container">
+        <!-- Left Facts -->
+        <div class="facts">
+            <h2>📘 Calculator Facts</h2>
+            <p>✔ The word "calculator" comes from Latin *calculare* meaning "to count".</p>
+            <p>✔ The first handheld calculator was built in 1967 by Texas Instruments.</p>
+            <p>✔ The abacus (500 B.C.) is the earliest known calculator.</p>
+        </div>
+
+        <!-- Calculator -->
+        <div id="calculator" class="calculator">
+            <h2>🖩 Calculator</h2>
+            <input type="text" id="result" readonly>
+            
+            <div class="row">
+                <button class="btn" onclick="appendValue('7')">7</button>
+                <button class="btn" onclick="appendValue('8')">8</button>
+                <button class="btn" onclick="appendValue('9')">9</button>
+                <button class="btn" onclick="appendValue('/')">÷</button>
+            </div>
+            <div class="row">
+                <button class="btn" onclick="appendValue('4')">4</button>
+                <button class="btn" onclick="appendValue('5')">5</button>
+                <button class="btn" onclick="appendValue('6')">6</button>
+                <button class="btn" onclick="appendValue('*')">×</button>
+            </div>
+            <div class="row">
+                <button class="btn" onclick="appendValue('1')">1</button>
+                <button class="btn" onclick="appendValue('2')">2</button>
+                <button class="btn" onclick="appendValue('3')">3</button>
+                <button class="btn" onclick="appendValue('-')">−</button>
+            </div>
+            <div class="row">
+                <button class="btn" onclick="appendValue('0')">0</button>
+                <button class="btn" onclick="clearResult()">C</button>
+                <button class="btn" onclick="calculateResult()">=</button>
+                <button class="btn" onclick="appendValue('+')">+</button>
+            </div>
+        </div>
+
+        <!-- Right Facts -->
+        <div class="facts">
+            <h2>📚 More Facts</h2>
+            <p>✔ Some calculators can solve quadratic equations and even draw graphs 📈</p>
+            <p>✔ Japan made the world’s smallest calculator—smaller than a credit card 💳</p>
+            <p>✔ Modern calculators use microchips instead of mechanical gears ⚙️</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 ActiveCal | Made with ❤️ by <strong>SriSingh</strong></p>
+    </footer>
+
+    <script>
+        function appendValue(value) {
+            document.getElementById("result").value += value;
+        }
+        function clearResult() {
+            document.getElementById("result").value = "";
+        }
+        function calculateResult() {
+            try {
+                document.getElementById("result").value = eval(document.getElementById("result").value);
+            } catch (e) {
+                document.getElementById("result").value = "Error";
+            }
+        }
+    </script>
+
+</body>
+</html>
